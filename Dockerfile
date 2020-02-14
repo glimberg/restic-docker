@@ -16,7 +16,7 @@ ENV RESTIC_TAG=latest
 RUN apk add --update --no-cache ca-certificates fuse openssh-client bash tzdata
 WORKDIR /root
 COPY --from=build /usr/local/src/restic/restic /usr/local/bin
-COPY entrypoint.sh backup.sh prune.sh forget.sh ./
+COPY entrypoint.sh backup.sh do_backup.sh prune.sh forget.sh ./
 ENV PATH="./:${PATH}"
 RUN chmod a+x ./*.sh
 RUN mkdir -p /var/spool/cron/crontabs \
